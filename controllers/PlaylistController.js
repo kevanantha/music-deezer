@@ -26,8 +26,8 @@ class PlaylistController {
           })
       })
       .then(() => {
-        res.send(obj)
-        // res.render("addStudentSong", {obj})
+        // res.send(obj)
+        res.render('viewPlaylist', { obj })
       })
       .catch(err => {
         res.send(err)

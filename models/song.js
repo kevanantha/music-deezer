@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Song.init(
     {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+      },
       name: DataTypes.STRING,
       link: DataTypes.STRING,
       preview: DataTypes.STRING,
@@ -18,10 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   )
   Song.associate = function(models) {
-    Song.belongsToMany(models.User, {
-      through: models.Playlist,
-      foreignKey: 'SongId',
-    })
+    // associations can be defined here
+    Song.belongsToMany(models.User, { through: models.Playlist })
   }
   return Song
 }
