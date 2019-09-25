@@ -5,7 +5,7 @@ const axios = require('axios')
 const PORT = process.env.PORT || 3000
 
 const { userRoutes, homeRoutes, playlistRoutes } = require('./routes')
-const { AuthController, PlaylistController } = require('./controllers')
+const { AuthController } = require('./controllers')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
@@ -28,6 +28,6 @@ app.get('/search', (req, res) => {
 
 app.use('/', homeRoutes)
 // app.use('/users', userRoutes)
-app.get('/users/:id/playlist', PlaylistController.findAll)
+app.use('/users', playlistRoutes)
 
 app.listen(PORT, console.log(`Server runs on PORT ${PORT}`))

@@ -1,6 +1,5 @@
 const router = require('express').Router()
 const { PlaylistController } = require('../controllers')
 
-router.get('/users/:id/playlist', () => {
-  PlaylistController.findAll
-})
+router.get('/:id/playlist', PlaylistController.findAll)
+module.exports = router
