@@ -8,7 +8,9 @@ class HomeController {
       .then(data => {
         res.render('home/index', {
           pageName: 'Home',
+          err: req.query.err,
           topTracks: data.data,
+          userId: 1,
         })
       })
       .catch(err => {
@@ -31,7 +33,7 @@ class HomeController {
           },
         })
         const playlist = Playlist.create({
-          UserId: 2,
+          UserId: req.params.id,
           SongId: req.body.trackId,
         })
         return Promise.all([song, playlist])
