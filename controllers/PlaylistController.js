@@ -8,26 +8,18 @@ class PlaylistController {
     let obj = {}
     obj['id'] = id
     console.log(id)
-    User.findByPk(id)
+    User.findByPk(req.params.id, {
+      include: [
+        {
+          model: Song,
+        },
+      ],
+    })
       .then(result => {
-        console.log(result)
-        // res.render("addStudentSubject", {id, result})
-        return (obj['result'] = result)
-        // res.render("editStudent", {id, result});
-      })
-      .then(() => {
-        return Song.findAll()
-          .then(Songs => {
-            console.log(Songs)
-            return (obj['Songs'] = Songs)
-          })
-          .catch(err => {
-            return err
-          })
-      })
-      .then(() => {
-        // res.send(obj)
-        res.render('viewPlaylist', { obj })
+        obj = result
+
+        //   res.send(obj)
+        res.render('viewPlaylist', { pageName: 'View Playlist', obj })
       })
       .catch(err => {
         res.send(err)

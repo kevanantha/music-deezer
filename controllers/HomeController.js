@@ -3,17 +3,19 @@ const { Song, Playlist } = require('../models')
 
 class HomeController {
   static index(req, res) {
-    // axios
-    //   .get(`https://api.deezer.com/chart/0/tracks`)
-    //   .then(data => {
-    //     res.render('home/index', {
-    //       pageName: 'Home',
-    //       topTracks: data.data,
-    //     })
-    //   })
-    //   .catch(err => {
-    //     res.send(err.message)
-    //   })
+    axios
+      .get(`https://api.deezer.com/chart/0/tracks`)
+      .then(data => {
+        res.render('home/index', {
+          pageName: 'Home',
+          err: req.query.err,
+          topTracks: data.data,
+          userId: 2,
+        })
+      })
+      .catch(err => {
+        res.send(err.message)
+      })
   }
 
   static addToPlaylist(req, res) {
@@ -31,7 +33,7 @@ class HomeController {
           },
         })
         const playlist = Playlist.create({
-          UserId: 2,
+          UserId: req.params.id,
           SongId: req.body.trackId,
         })
         return Promise.all([song, playlist])

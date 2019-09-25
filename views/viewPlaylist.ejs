@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<%- include('./partials/head')  %>
+<%- include('./partials/navbar')  %>
         <div class="row">
                 <% for (let i = 0; i < obj["Songs"].length; i++){ %>
                   <div class="col-sm-4">
@@ -20,7 +13,7 @@
                     Your browser does not support the audio element.
                     </audio>
                     <form action="/add-to-playlist" method="POST">
-                      <button type="submit" class="btn btn-primary" name="trackId" value="<%= obj["Songs"][i].id%>">Delete</button>
+                      <button type="submit" class="btn btn-primary" name="SongId" value="<%= obj["Songs"][i].id%>">Delete</button>
                     </form>
                       </div>
                     </div>
@@ -28,7 +21,4 @@
                 <% } %>
               </div>
     
-</body>
-
-
-</html>
+<%- include('./partials/footer')  %>

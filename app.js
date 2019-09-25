@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get('/signup', AuthController.signUpForm)
 app.post('/signup', AuthController.signUp)
+app.get('/signin', AuthController.signInForm)
+app.post('/signin', AuthController.signIn)
 
 app.get('/search', (req, res) => {
   axios
