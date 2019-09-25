@@ -10,7 +10,7 @@ class HomeController {
           pageName: 'Home',
           err: req.query.err,
           topTracks: data.data,
-          userId: 1,
+          userId: 2,
         })
       })
       .catch(err => {

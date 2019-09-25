@@ -4,7 +4,7 @@ var app = express()
 const axios = require('axios')
 const PORT = process.env.PORT || 3000
 
-const { userRoutes, homeRoutes } = require('./routes')
+const { userRoutes, homeRoutes, playlistRoutes } = require('./routes')
 const { AuthController } = require('./controllers')
 
 app.set('view engine', 'ejs')
@@ -28,5 +28,6 @@ app.get('/search', (req, res) => {
 
 app.use('/', homeRoutes)
 // app.use('/users', userRoutes)
+app.use('/users', playlistRoutes)
 
 app.listen(PORT, console.log(`Server runs on PORT ${PORT}`))
