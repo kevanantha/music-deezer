@@ -1,0 +1,15 @@
+<%- include('../partials/head')  %>
+<%- include('../partials/navbar')  %>
+
+<% topTracks.data.forEach(top => { %>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<%= top.artist.picture_big %>" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title"><%= top.artist.name %></h5>
+      <p class="card-text"><%= top.title  %></p>
+      <button type="submit" class="btn btn-primary">Add To Playlist</button>
+    </div>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer')  %>
