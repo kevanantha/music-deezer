@@ -5,10 +5,11 @@ class HomeController {
     axios
       .get(`https://api.deezer.com/chart/0/tracks`)
       .then(data => {
-        res.render('home/index', {
-          title: 'Home',
-          topTracks: data.data,
-        })
+        res.send(data.data)
+        // res.render('home/index', {
+        //   title: 'Home',
+        //   topTracks: data.data,
+        // })
       })
       .catch(err => {
         res.send(err.message)

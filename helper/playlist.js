@@ -1,3 +1,5 @@
+//
+// $(document).prepare()
 $(document).ready(function() {
   new jPlayerPlaylist(
     {
