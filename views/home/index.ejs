@@ -1,6 +1,9 @@
 <%- include('../partials/head')  %>
 <%- include('../partials/navbar')  %>
 
+  <% if (err) { %>
+    <h3><%= err %></h3>
+  <%} %>
   <div class="container">
     <div class="row">
       <% topTracks.data.forEach(top => { %>
@@ -14,7 +17,7 @@
             <source src="<%= top.preview %>" type="audio/mpeg">
           Your browser does not support the audio element.
           </audio>
-          <form action="users/:id/add-to-playlist" method="POST">
+          <form action="users/<%= userId %>/add-to-playlist" method="POST">
             <button type="submit" class="btn btn-primary" name="trackId" value="<%= top.id %>">Add To Playlist</button>
           </form>
             </div>
