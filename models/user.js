@@ -11,6 +11,17 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [3],
           notEmpty: true,
+          isUnique(value) {
+            return User.findOne({
+              where: {
+                username: value,
+              },
+            }).then(user => {
+              if (user) {
+                throw new Error('User already exist')
+              }
+            })
+          },
         },
       },
       email: {
@@ -19,6 +30,17 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true,
           len: [3],
           notEmpty: true,
+          isUnique(value) {
+            return User.findOne({
+              where: {
+                email: value,
+              },
+            }).then(user => {
+              if (user) {
+                throw new Error('User already exist')
+              }
+            })
+          },
         },
       },
       password: {
@@ -29,6 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       salt: DataTypes.STRING,
+      isLogin: DataTypes.BOOLEAN,
     },
     {
       sequelize,

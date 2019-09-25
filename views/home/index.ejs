@@ -14,7 +14,7 @@
             <source src="<%= top.preview %>" type="audio/mpeg">
           Your browser does not support the audio element.
           </audio>
-          <form action="/add-to-playlist" method="POST">
+          <form action="users/:id/add-to-playlist" method="POST">
             <button type="submit" class="btn btn-primary" name="trackId" value="<%= top.id %>">Add To Playlist</button>
           </form>
             </div>
