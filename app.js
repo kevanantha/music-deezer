@@ -32,5 +32,6 @@ app.get('/search', (req, res) => {
 
 app.use('/', homeRoutes)
 // app.use('/users', userRoutes)
+app.use('/users', playlistRoutes)
 
 app.listen(PORT, console.log(`Server runs on PORT ${PORT}`))

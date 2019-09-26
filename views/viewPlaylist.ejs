@@ -1,0 +1,24 @@
+<%- include('./partials/head')  %>
+<%- include('./partials/navbar')  %>
+        <div class="row">
+                <% for (let i = 0; i < obj["Songs"].length; i++){ %>
+                  <div class="col-sm-4">
+                    <div class="card" style="margin-bottom: 2rem">
+                      <img class="card-img-top" src="<%= obj["Songs"][i].picture %>" alt="Card image cap" >
+                      <div class="card-body">
+                    <h5 class="card-title"><%= obj["Songs"][i].name %></h5>
+                    <p class="card-text"><%= obj["Songs"][i].artist  %></p>
+                    <audio controls>
+                      <source src="<%= obj["Songs"][i].preview %>" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                    </audio>
+                    <form action="/add-to-playlist" method="POST">
+                      <button type="submit" class="btn btn-primary" name="SongId" value="<%= obj["Songs"][i].id%>">Delete</button>
+                    </form>
+                      </div>
+                    </div>
+                  </div>
+                <% } %>
+              </div>
+    
+<%- include('./partials/footer')  %>
