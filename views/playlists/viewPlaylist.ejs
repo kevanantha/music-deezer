@@ -3,12 +3,16 @@
 
   <div class="container">
     <% if (err) { %>
-      <div class="alert alert-danger" role="alert">
-        <p><%= err %></p>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> <%= err %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     <% } %>
-    <div class="row">
-      <% for (let i = 0; i < obj["Songs"].length; i++){ %>
+    <% if (obj["Songs"].length) { %>
+      <div class="row">
+        <% for (let i = 0; i < obj["Songs"].length; i++){ %>
         <div class="col-sm-4">
           <div class="card" style="margin-bottom: 2rem">
             <img class="card-img-top" src="<%= obj["Songs"][i].picture %>" alt="Card image cap" >
@@ -23,8 +27,14 @@
             </div>
           </div>
         </div>
-      <% } %>
-    </div>
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="text-center">
+        <h2>No data</h2>
+        <a href="/">explore to add songs to playlist</a>
+      </div>
+    <% } %>
   </div>
     
 <%- include('../partials/footer')  %>

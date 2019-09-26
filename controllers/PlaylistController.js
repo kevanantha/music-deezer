@@ -15,6 +15,7 @@ class PlaylistController {
       ],
     })
       .then(result => {
+        res.send(result)
         obj = result
         res.render('playlists/viewPlaylist', {
           pageName: 'View Playlist',

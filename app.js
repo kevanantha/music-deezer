@@ -11,9 +11,10 @@ app.use(
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { secure: false },
   }),
 )
+app.locals.duration = require('./helpers/duration')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))

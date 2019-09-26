@@ -24,7 +24,7 @@ class AuthController {
             userId: user.dataValues.id,
             username: user.dataValues.username,
           }
-          res.redirect('/')
+          res.redirect(`/?signedIn=You are signed in`)
         } else {
           throw { type: 'USER_EXIST', message: 'User already exist' }
         }
@@ -67,7 +67,7 @@ class AuthController {
             userId: userData.dataValues.id,
             username: userData.dataValues.username,
           }
-          res.redirect('/')
+          res.redirect(`/?signedIn=You are signed in`)
         } else {
           throw { type: 'USERNAME_PASSWORD_WRONG', message: 'Username / password wrong' }
         }
@@ -83,7 +83,7 @@ class AuthController {
   static signOut(req, res) {
     req.session.destroy(err => {
       if (err) res.redirect(`/?err=${err.message}`)
-      res.redirect('/')
+      res.redirect('/?signedOut=You are logged out')
     })
   }
 }

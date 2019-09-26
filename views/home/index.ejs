@@ -3,10 +3,41 @@
 
   <div class="container">
     <% if (err) { %>
-      <div class="alert alert-danger" role="alert">
-        <p><%= err %></p>
-      </div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> <%= err %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <% } %>
+
+    <% if (success) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> <%= success %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+
+    <% if (signedOut) { %>
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+      <strong>Info!</strong> <%= signedOut %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+
+    <% if (signedIn) { %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> <%= signedIn %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+
     <h1 class="text-center" style="margin-bottom: 3rem">Top Tracks</h1>
     <div class="row">
       <% topTracks.data.forEach(top => { %>
@@ -14,19 +45,20 @@
           <div class="card" style="margin-bottom: 2rem">
             <img class="card-img-top" src="<%= top.artist.picture_big %>" alt="Card image cap">
             <div class="card-body text-center">
-          <h5 class="card-title">
-            <a href="/tracks/<%= top.id %>">
-              <%= top.title %>
-            </a>
-          </h5>
-          <p class="card-text"><%= top.artist.name  %></p>
-          <audio controls style="margin-bottom: 1rem">
-            <source src="<%= top.preview %>" type="audio/mpeg">
-          Your browser does not support the audio element.
-          </audio>
-          <form action="users/add-to-playlist" method="POST">
-            <button type="submit" class="btn btn-primary" name="trackId" value="<%= top.id %>">Add To Playlist</button>
-          </form>
+              <h5 class="card-title">
+                <a href="/tracks/<%= top.id %>">
+                  <%= top.title %>
+                </a>
+              </h5>
+              <p class="card-text"><%= top.artist.name  %></p>
+              <p class="card-text"><%= duration(top.duration) %></p>
+              <audio controls style="margin-bottom: 1rem">
+                <source src="<%= top.preview %>" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
+              <form action="users/add-to-playlist" method="POST">
+                <button type="submit" class="btn btn-primary" name="trackId" value="<%= top.id %>">Add To Playlist</button>
+              </form>
             </div>
           </div>
         </div>

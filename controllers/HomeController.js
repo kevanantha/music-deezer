@@ -9,12 +9,15 @@ class HomeController {
         res.render('home/index', {
           pageName: 'Home',
           err: req.query.err,
+          success: req.query.success,
           topTracks: data.data,
           user: req.session.user,
+          signedOut: req.query.signedOut,
+          signedIn: req.query.signedIn,
         })
       })
       .catch(err => {
-        res.send(err.message)
+        res.redirect(`/?err=${err.message}`)
       })
   }
 
@@ -39,7 +42,7 @@ class HomeController {
         return Promise.all([song, playlist])
       })
       .then(promise => {
-        res.redirect('/')
+        res.redirect(`/?success=Successfully added to playlist`)
       })
       .catch(err => {
         res.redirect(`/?err=${err.message}`)
@@ -59,6 +62,7 @@ class HomeController {
       })
       .catch(err => {
         res.send(err.message)
+        res.redirect(`/?err=${err.message}`)
       })
   }
 }
