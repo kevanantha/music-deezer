@@ -5,8 +5,16 @@ const axios = require('axios')
 const session = require('express-session')
 const PORT = process.env.PORT || 3000
 
-const { userRoutes, homeRoutes, playlistRoutes } = require('./routes')
-const { AuthController } = require('./controllers')
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  }),
+)
+
+const { homeRoutes, authRoutes, playlistRoutes } = require('./routes')
 
 app.use(
   session({
@@ -19,11 +27,6 @@ app.use(
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
-
-app.get('/signup', AuthController.signUpForm)
-app.post('/signup', AuthController.signUp)
-app.get('/signin', AuthController.signInForm)
-app.post('/signin', AuthController.signIn)
 
 app.get('/search', (req, res) => {
   axios

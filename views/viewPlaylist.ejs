@@ -8,14 +8,12 @@
                       <div class="card-body">
                     <h5 class="card-title"><%= obj["Songs"][i].name %></h5>
                     <p class="card-text"><%= obj["Songs"][i].artist  %></p>
-                    <p class="card-text"><a href="<%= obj["Songs"][i].link%>"> For Full Link</a></p>
+                    <p class="card-text"><a target="_blank" href="<%= obj["Songs"][i].link%>"> For Full Link</a></p>
                     <audio controls>
                       <source src="<%= obj["Songs"][i].preview %>" type="audio/mpeg">
                     Your browser does not support the audio element.
                     </audio>
-                    <form action="/users/" method="POST">
-                      <button type="submit" class="btn btn-primary" name="SongId" value="<%= obj["Songs"][i].id%>"><a href="/users/<%= obj.id %>/playlist/<%= obj["Songs"][i].id %>">Delete</a></button>
-                    </form>
+                      <a href="/users/playlist/<%= obj["Songs"][i].id %>" class="btn btn-primary">Delete</a>
                       </div>
                     </div>
                   </div>
