@@ -1,15 +1,17 @@
 <%- include('../partials/head')  %>
 <%- include('../partials/navbar')  %>
 
-  <% if (err) { %>
-    <h3><%= err %></h3>
-  <%} %>
   <div class="container">
+    <% if (err) { %>
+      <div class="alert alert-danger" role="alert">
+        <p><%= err %></p>
+      </div>
+    <% } %>
     <div class="row">
       <% search.data.forEach(s => { %>
         <div class="col-sm-4">
           <div class="card" style="margin-bottom: 2rem">
-            <img class="card-img-s" src="<%= s.artist.picture_big %>" alt="Card image cap">
+            <img class="card-img-s" src="<%= s.artist.picture_medium %>" alt="Card image cap">
             <div class="card-body text-center">
           <h5 class="card-title"><%= s.title %></h5>
           <p class="card-text"><%= s.artist.name  %></p>
