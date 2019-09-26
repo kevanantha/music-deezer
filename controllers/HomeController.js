@@ -33,7 +33,7 @@ class HomeController {
           },
         })
         const playlist = Playlist.create({
-          UserId: req.params.id,
+          UserId: req.session.user.userId,
           SongId: req.body.trackId,
         })
         return Promise.all([song, playlist])
@@ -42,8 +42,15 @@ class HomeController {
         res.redirect('/')
       })
       .catch(err => {
-        res.send(`/?err=${err.message}`)
+        res.redirect(`/?err=${err.message}`)
       })
+  }
+
+  static signOut(req, res) {
+    req.session.destroy(err => {
+      if (err) res.redirect(`/?err=${err.message}`)
+      res.redirect('/')
+    })
   }
 }
 

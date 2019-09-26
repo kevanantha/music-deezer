@@ -14,7 +14,16 @@ app.use(
   }),
 )
 
-const { homeRoutes, authRoutes } = require('./routes')
+const { homeRoutes, authRoutes, playlistRoutes } = require('./routes')
+
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  }),
+)
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))

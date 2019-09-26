@@ -14,8 +14,9 @@ router.get('/signup', AuthController.signUpForm)
 router.post('/signup', AuthController.signUp)
 router.get('/signin', AuthController.signInForm)
 router.post('/signin', AuthController.signIn)
+router.get('/signout', HomeController.signOut)
 
 router.get('/', HomeController.index)
-router.post('/users/:id/add-to-playlist', loginMiddleware, HomeController.addToPlaylist)
+router.post('/users/add-to-playlist', loginMiddleware, HomeController.addToPlaylist)
 
 module.exports = router

@@ -4,11 +4,10 @@ const { User } = require('../models')
 
 class PlaylistController {
   static findAll(req, res) {
-    let id = req.params.id
+    let id = req.session.user.userId
     let obj = {}
     obj['id'] = id
-    console.log(id)
-    User.findByPk(req.params.id, {
+    User.findByPk(id, {
       include: [
         {
           model: Song,
@@ -17,32 +16,28 @@ class PlaylistController {
     })
       .then(result => {
         obj = result
-
+        // res.send(result)
         //   res.send(obj)
-        res.render('viewPlaylist', { pageName: 'View Playlist', obj })
+        res.render('viewPlaylist', { pageName: 'View Playlist', obj, user: req.session.user })
       })
       .catch(err => {
-        res.send(err)
-      })
-  }
-
-  static create(req, res) {
-    Playlist.create({
-      UserId: req.params.id,
-      SongId: req.body.SongId,
-    })
-      .then(result => {
-        res.redirect()
-      })
-      .catch(err => {
-        res.redirect()
+        res.redirect(`/users/playlist/?error=${err}`)
       })
   }
 
   static delete(req, res) {
-    Playlist.delete({
-      where: {},
+    Playlist.destroy({
+      where: {
+        SongId: req.params.SongId,
+        UserId: req.session.user.userId,
+      },
     })
+      .then(() => {
+        res.redirect('/users/playlist')
+      })
+      .catch(err => {
+        res.redirect(`/users/playlist/?error=${err}`)
+      })
   }
 }
 
