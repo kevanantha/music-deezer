@@ -45,13 +45,6 @@ class HomeController {
         res.redirect(`/?err=${err.message}`)
       })
   }
-
-  static signOut(req, res) {
-    req.session.destroy(err => {
-      if (err) res.redirect(`/?err=${err.message}`)
-      res.redirect('/')
-    })
-  }
 }
 
 module.exports = HomeController

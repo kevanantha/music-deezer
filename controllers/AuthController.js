@@ -79,6 +79,13 @@ class AuthController {
         res.redirect(`/signup?err=${err.message}`)
       })
   }
+
+  static signOut(req, res) {
+    req.session.destroy(err => {
+      if (err) res.redirect(`/?err=${err.message}`)
+      res.redirect('/')
+    })
+  }
 }
 
 module.exports = AuthController

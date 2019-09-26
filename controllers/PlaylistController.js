@@ -16,9 +16,11 @@ class PlaylistController {
     })
       .then(result => {
         obj = result
-        // res.send(result)
-        //   res.send(obj)
-        res.render('viewPlaylist', { pageName: 'View Playlist', obj, user: req.session.user })
+        res.render('playlists/viewPlaylist', {
+          pageName: 'View Playlist',
+          obj,
+          user: req.session.user,
+        })
       })
       .catch(err => {
         res.redirect(`/users/playlist/?error=${err}`)
@@ -41,5 +43,4 @@ class PlaylistController {
   }
 }
 
-// PlaylistController.findAll(req,res)
 module.exports = PlaylistController
