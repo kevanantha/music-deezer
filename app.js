@@ -28,17 +28,6 @@ app.use(
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/search', (req, res) => {
-  axios
-    .get(`https://api.deezer.com/search?q=${req.query.q}`)
-    .then(data => {
-      res.send(data.data)
-    })
-    .catch(err => {
-      res.send(err.message)
-    })
-})
-
 app.use('/', homeRoutes)
 app.use('/users', playlistRoutes)
 
