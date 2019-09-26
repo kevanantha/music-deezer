@@ -15,7 +15,6 @@ app.use(
   }),
 )
 app.locals.duration = require('./helpers/duration')
-app.locals.getFunName = require('./helpers/getFunName')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
