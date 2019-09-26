@@ -14,7 +14,9 @@
         <p><%= err %></p>
       </div>
     <% } %>
-    <h1 style="margin-bottom: 3rem"><%= track.title %></h1>
+    <h1 class="text-center" style="margin-bottom: 3rem">
+      <%= track.artist.name %> - <%= track.title %>
+    </h1>
     <div class="row">
       <div class="col-sm-6">
         <img class="card-img-top" src="<%= track.artist.picture_big %>" alt="Card image cap">
@@ -23,26 +25,26 @@
         <div class="card" style="margin-bottom: 2rem">
           <div class="card-body">
             <h5 class="card-title">
-              <%= track.release_date %>
+              Release Date: <%= track.release_date %>
             </h5>
           </div>
-          <hr>
+          <hr style="margin: 0">
           <div class="card-body">
-        <h5 class="card-title">
-          <a href="<%= track.link %>">
-            <%= track.title %>
-          </a>
-        </h5>
-        <p class="card-text">
-          <a href="<%= track.artist.link %>">
-            <%= track.artist.name %>
-          </a>
-        </p>
+            <h5 class="card-title">
+              <a href="<%= track.link %>">
+                <%= track.title %>
+              </a>
+            </h5>
+            <p class="card-text">
+              <a href="<%= track.artist.link %>">
+                <%= track.artist.name %>
+              </a>
+            </p>
         <audio controls style="margin-bottom: 1rem">
           <source src="<%= track.preview %>" type="audio/mpeg">
         Your browser does not support the audio element.
         </audio>
-        <form action="users/add-to-playlist" method="POST">
+        <form action="/users/add-to-playlist" method="POST">
           <button type="submit" class="btn btn-primary" name="trackId" value="<%= track.id %>">Add To Playlist</button>
         </form>
           </div>
