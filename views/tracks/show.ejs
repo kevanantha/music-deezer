@@ -1,17 +1,13 @@
 <%- include('../partials/head')  %>
 <%- include('../partials/navbar')  %>
 
-<!-- title -->
-<!-- link -->
-<!-- release_date -->
-<!-- artist.name -->
-<!-- artist.link -->
-<!-- artist.picture -->
-
   <div class="container">
     <% if (err) { %>
-      <div class="alert alert-danger" role="alert">
-        <p><%= err %></p>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> <%= err %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
     <% } %>
     <h1 class="text-center" style="margin-bottom: 3rem">
@@ -25,7 +21,12 @@
         <div class="card" style="margin-bottom: 2rem">
           <div class="card-body">
             <h5 class="card-title">
-              Release Date: <%= track.release_date %>
+              <div style="margin-bottom: 1rem">
+                Release Date: <%= track.release_date %>
+              </div>
+              <div>
+                Album: <%= track.album.title %>
+              </div>
             </h5>
           </div>
           <hr style="margin: 0">
@@ -40,13 +41,14 @@
                 <%= track.artist.name %>
               </a>
             </p>
-        <audio controls style="margin-bottom: 1rem">
-          <source src="<%= track.preview %>" type="audio/mpeg">
-        Your browser does not support the audio element.
-        </audio>
-        <form action="/users/add-to-playlist" method="POST">
-          <button type="submit" class="btn btn-primary" name="trackId" value="<%= track.id %>">Add To Playlist</button>
-        </form>
+            <p class="card-text"><%= duration(track.duration) %></p>
+            <audio controls style="margin-bottom: 1rem">
+              <source src="<%= track.preview %>" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+            <form action="/users/add-to-playlist" method="POST">
+              <button type="submit" class="btn btn-primary" name="trackId" value="<%= track.id %>">Add To Playlist</button>
+            </form>
           </div>
         </div>
       </div>
