@@ -20,6 +20,7 @@ class PlaylistController {
           pageName: 'View Playlist',
           obj,
           user: req.session.user,
+          err: req.query.err,
         })
       })
       .catch(err => {

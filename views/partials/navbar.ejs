@@ -10,17 +10,24 @@
 
   <% if (user) { %>
     <div>
-      <a href="/users/playlist" class="btn btn-primary my-2 my-sm-0">Playlist</a>
-    </div>
-    <div style="margin-left: 1.5rem">
-      <a href="/signout" class="btn btn-outline-primary my-2 my-sm-0">Sign Out</a>
+      <div class="btn-group">
+        <a href="/users/playlist" class="btn btn-success my-2 my-sm-0"><i class='fas fa-user-circle'></i><%= user.username %></a>
+        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/users/playlist">Playlist</a>
+          <div class="dropdown-divider"></div>
+          <a href="/signout" class="dropdown-item">Sign Out</a>
+        </div>
+      </div>
     </div>
   <% } else { %>
     <div>
-      <a href="/signup" class="btn btn-primary my-2 my-sm-0">Sign Up</a>
+      <a href="/signup" class="btn btn-success my-2 my-sm-0">Sign Up</a>
     </div>
     <div style="margin-left: 1.5rem">
-      <a href="/signin" class="btn btn-outline-primary my-2 my-sm-0">Sign In</a>
+      <a href="/signin" class="btn btn-outline-success my-2 my-sm-0">Sign In</a>
     </div>
     <% } %>
 </nav>
