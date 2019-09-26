@@ -4,17 +4,7 @@ var app = express()
 const axios = require('axios')
 const session = require('express-session')
 const PORT = process.env.PORT || 3000
-
-app.use(
-  session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
-  }),
-)
-
-const { homeRoutes, authRoutes, playlistRoutes } = require('./routes')
+const { homeRoutes, authRoutes, playlistRoutes, trackRoutes } = require('./routes')
 
 app.use(
   session({
@@ -30,5 +20,6 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/', homeRoutes)
 app.use('/users', playlistRoutes)
+app.use('/tracks', trackRoutes)
 
 app.listen(PORT, console.log(`Server runs on PORT ${PORT}`))
