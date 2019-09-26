@@ -14,7 +14,11 @@
           <div class="card" style="margin-bottom: 2rem">
             <img class="card-img-top" src="<%= top.artist.picture_big %>" alt="Card image cap">
             <div class="card-body text-center">
-          <h5 class="card-title"><%= top.title %></h5>
+          <h5 class="card-title">
+            <a href="/tracks/<%= top.id %>">
+              <%= top.title %>
+            </a>
+          </h5>
           <p class="card-text"><%= top.artist.name  %></p>
           <audio controls style="margin-bottom: 1rem">
             <source src="<%= top.preview %>" type="audio/mpeg">
