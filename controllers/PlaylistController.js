@@ -7,7 +7,7 @@ class PlaylistController {
     let id = req.params.id
     let obj = {}
     obj['id'] = id
-    console.log(id)
+    // console.log(id)
     User.findByPk(req.params.id, {
       include: [
         {
@@ -22,34 +22,22 @@ class PlaylistController {
         res.render('viewPlaylist', { pageName: 'View Playlist', obj })
       })
       .catch(err => {
-        res.send(err)
-      })
-  }
-
-  static create(req, res) {
-    Playlist.create({
-      UserId: req.params.id,
-      SongId: req.body.SongId,
-    })
-      .then(result => {
-        res.redirect()
-      })
-      .catch(err => {
-        res.redirect()
+        res.redirect(`/users/${id}/playlist/?error=${err}`)
       })
   }
 
   static delete(req, res) {
     Playlist.destroy({
       where: {
-        id: req.params.SongId,
+        SongId: req.params.SongId,
+        UserId: req.params.id,
       },
     })
       .then(() => {
         res.redirect('/')
       })
       .catch(err => {
-        res.send(err)
+        res.redirect(`/users/${req.params.id}/playlist/?error=${err}`)
       })
   }
 }

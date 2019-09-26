@@ -2,10 +2,20 @@ require('dotenv').config()
 var express = require('express')
 var app = express()
 const axios = require('axios')
+const session = require('express-session')
 const PORT = process.env.PORT || 3000
 
 const { userRoutes, homeRoutes, playlistRoutes } = require('./routes')
 const { AuthController } = require('./controllers')
+
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  }),
+)
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
