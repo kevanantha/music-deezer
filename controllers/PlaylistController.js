@@ -40,9 +40,17 @@ class PlaylistController {
   }
 
   static delete(req, res) {
-    Playlist.delete({
-      where: {},
+    Playlist.destroy({
+      where: {
+        id: req.params.SongId,
+      },
     })
+      .then(() => {
+        res.redirect('/')
+      })
+      .catch(err => {
+        res.send(err)
+      })
   }
 }
 
