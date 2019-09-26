@@ -14,7 +14,7 @@ router.get('/signup', AuthController.signUpForm)
 router.post('/signup', AuthController.signUp)
 router.get('/signin', AuthController.signInForm)
 router.post('/signin', AuthController.signIn)
-router.get('/signout', HomeController.signOut)
+router.get('/signout', AuthController.signOut)
 
 router.get('/', HomeController.index)
 router.post('/users/add-to-playlist', loginMiddleware, HomeController.addToPlaylist)
