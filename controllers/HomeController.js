@@ -45,6 +45,23 @@ class HomeController {
         res.redirect(`/?err=${err.message}`)
       })
   }
+
+  static search(req, res) {
+    axios
+      .get(`https://api.deezer.com/search?q=${req.body.q}`)
+      .then(data => {
+        res.render('home/search', {
+          search: data.data,
+          pageName: 'Search',
+          user: req.session.user,
+          err: req.query.err,
+        })
+        // res.send(data.data)
+      })
+      .catch(err => {
+        res.send(err.message)
+      })
+  }
 }
 
 module.exports = HomeController

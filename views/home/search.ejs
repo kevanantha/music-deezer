@@ -6,19 +6,19 @@
   <%} %>
   <div class="container">
     <div class="row">
-      <% topTracks.data.forEach(top => { %>
+      <% search.data.forEach(s => { %>
         <div class="col-sm-4">
           <div class="card" style="margin-bottom: 2rem">
-            <img class="card-img-top" src="<%= top.artist.picture_big %>" alt="Card image cap">
+            <img class="card-img-s" src="<%= s.artist.picture_big %>" alt="Card image cap">
             <div class="card-body text-center">
-          <h5 class="card-title"><%= top.title %></h5>
-          <p class="card-text"><%= top.artist.name  %></p>
+          <h5 class="card-title"><%= s.title %></h5>
+          <p class="card-text"><%= s.artist.name  %></p>
           <audio controls style="margin-bottom: 1rem">
-            <source src="<%= top.preview %>" type="audio/mpeg">
+            <source src="<%= s.preview %>" type="audio/mpeg">
           Your browser does not support the audio element.
           </audio>
           <form action="users/add-to-playlist" method="POST">
-            <button type="submit" class="btn btn-primary" name="trackId" value="<%= top.id %>">Add To Playlist</button>
+            <button type="submit" class="btn btn-primary" name="trackId" value="<%= s.id %>">Add To Playlist</button>
           </form>
             </div>
           </div>

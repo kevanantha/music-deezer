@@ -4,18 +4,23 @@
 <% if (err) { %>
   <h3><%= err %></h3>
 <% } %>
-<form action="/signup" method="POST">
-  <label for="username">Username</label>
-  <input type="text" name="username" required />
-
-  <label for="email">Email</label>
-  <input type="email" name="email" required />
-  
-  <label for="password">Password</label>
-  <input type="password" name="password" required />
-
-  <input type="submit" value="save">
-  <a href="/signin">signin</a>
-</form>
+<div class="container">
+  <form action="/signup" method="POST">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" name="username" class="form-control" placeholder="johndoe">
+    </div>
+    <div class="form-group">
+      <label>Email address</label>
+      <input type="email" name="email" class="form-control"aria-describedby="emailHelp" placeholder="Enter email">
+      <smallclass="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control"placeholder="Password">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Sign Up">
+  </form>
+</div>
 
 <%- include('../partials/footer')  %>
