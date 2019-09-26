@@ -1,6 +1,12 @@
 <%- include('../partials/head')  %>
 <%- include('../partials/navbar')  %>
+
   <div class="container">
+    <% if (err) { %>
+      <div class="alert alert-danger" role="alert">
+        <p><%= err %></p>
+      </div>
+    <% } %>
     <div class="row">
       <% for (let i = 0; i < obj["Songs"].length; i++){ %>
         <div class="col-sm-4">

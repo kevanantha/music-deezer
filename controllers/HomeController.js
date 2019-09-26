@@ -56,7 +56,6 @@ class HomeController {
           user: req.session.user,
           err: req.query.err,
         })
-        // res.send(data.data)
       })
       .catch(err => {
         res.send(err.message)

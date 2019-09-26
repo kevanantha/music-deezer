@@ -50,8 +50,6 @@ module.exports = (sequelize, DataTypes) => {
           notEmpty: true,
         },
       },
-      salt: DataTypes.STRING,
-      isLogin: DataTypes.BOOLEAN,
     },
     {
       sequelize,

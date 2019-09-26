@@ -73,10 +73,10 @@ class AuthController {
         }
       })
       .then(() => {
-        res.redirect('/?isLogin=true')
+        res.redirect('/')
       })
       .catch(err => {
-        res.redirect(`/signup?err=${err.message}`)
+        res.redirect(`/signin?err=${err.message}`)
       })
   }
 
