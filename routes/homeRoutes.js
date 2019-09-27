@@ -1,13 +1,6 @@
 const router = require('express').Router()
 const { HomeController, AuthController } = require('../controllers')
-
-const loginMiddleware = (req, res, next) => {
-  if (req.session.user) {
-    next()
-  } else {
-    res.redirect(`/signin?err=You need to sign in before add playlist`)
-  }
-}
+const loginMiddleware = require('../middlewares/login')
 
 router.get('/signup', AuthController.signUpForm)
 router.post('/signup', AuthController.signUp)
