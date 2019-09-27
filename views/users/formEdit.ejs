@@ -1,0 +1,25 @@
+<%- include('../partials/head')  %>
+<%- include('../partials/navbar')  %>
+
+<div class="container">
+  <% if (err) { %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> <%= err %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% } %>
+  <form method="POST" action="">
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" name="username" value="<%= u.username %>" placeholder="johndoe" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/">Cancel</a>
+  </form>
+</div>
+
+<%- include('../partials/footer')  %>
+
