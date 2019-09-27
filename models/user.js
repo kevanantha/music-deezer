@@ -66,21 +66,6 @@ module.exports = (sequelize, DataTypes) => {
               throw new Error(err.message)
             })
         },
-        // beforeUpdate: (user, options) => {
-        //   User.findByPk(user.dataValues.id, {
-        //     where: {
-        //       username: user.dataValues.username
-        //     }
-        //   })
-        //     .then(data => {
-        //       if (data.id == user.datavalues.id) {
-        //         throw new Error('username already exist')
-        //       }
-        //     })
-        //     .catch(err => {
-        //       throw new Error(err.message)
-        //     })
-        // }
       },
     },
   )
