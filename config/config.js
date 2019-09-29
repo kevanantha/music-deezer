@@ -15,10 +15,10 @@ module.exports = {
   //   operatorsAliases: false,
   // },
   production: {
-    username: 'euauvrbahzvxbb',
-    password: 'd762eb4afb2afd9dd9eae3410e391353d49000a31f7db5e3192621a013a94ec6',
-    database: 'd4ur40ta3hjvsn',
-    host: 'ec2-50-19-95-77.compute-1.amazonaws.com',
-    dialect: 'postgres',
+    username: 'process.env.DB_USERNAME',
+    password: 'process.env.DB_PASSWORD',
+    database: 'process.env.DB_NAME',
+    host: 'process.env.DB_HOST',
+    dialect: 'process.env.DB_DIALECT',
   },
 }
